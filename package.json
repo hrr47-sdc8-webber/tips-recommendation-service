@@ -1,16 +1,24 @@
 {
-  "name": "zagat-tips-recommendations-module",
-  "version": "1.0",
-  "description": "This module presents the tips and recommendations breakdown on a restaurant's Zagat listing.",
-  "author": "Meredith Myers",
-  "license": "",
-  "engines": {
-    "node": ">=6.13.0"
-  },
-  "scripts": {},
-  "dependencies": {},
-  "devDependencies": {
+  "name": "tips-recommendations-service",
+  "version": "1.0.0",
+  "description": "> Project description",
+  "main": ".eslintrc.js",
+  "dependencies": {
     "babel-preset-airbnb": "^5.0.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
-  }
+    "faker": "^4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FEC-7-Stevens/tips-recommendations-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FEC-7-Stevens/tips-recommendations-service/issues"
+  },
+  "homepage": "https://github.com/FEC-7-Stevens/tips-recommendations-service#readme"
 }
