@@ -41,6 +41,7 @@ function generateIndividualRestaurantData() {
 
   let randomInteger = getRandomInteger(1, 10);
 
+  // STRETCH CONSIDERATION: prevent duplicate faker results
   while (restaurantData['features'].length < randomInteger) {
     restaurantData['features'].push(faker.commerce.productAdjective());
   }
@@ -69,3 +70,5 @@ for (restaurantCount = 0; restaurantCount < 100; restaurantCount++) {
       console.log(results);
     });
 }
+
+// TO DO: Create generated data for Articles table

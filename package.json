@@ -12,7 +12,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node database/seed.js"
+    "seed": "node database/seed.js",
+    "server": "node server/index.js"
   },
   "repository": {
     "type": "git",
