@@ -1,7 +1,21 @@
 const faker = require('faker');
 const fs = require('fs');
+const express = require('express')
+const app = express();
 
-function generateRestaurantData () {
+const port = 6070
+
+let restaurantEntries = [];
+
+let randomRestaurantName = faker.company.companyName();
+let randomDishName = faker.commerce.product();
+let randomDishImage = faker.image.food();
+let randomTip = faker.commerce.productDescription();
+let randomFeature = faker.commerce.productAdjective();
+let randomTag = faker.commerce.productAdjective();
+
+function generateIndividualRestaurantData() {
+
   let restaurantData = {
     restaurantName: '',
     dishName1: '',
@@ -15,14 +29,7 @@ function generateRestaurantData () {
     tags: []
   };
 
-  let randomRestaurantName = faker.company.companyName();
-  let randomDishName = faker.commerce.product();
-  let randomDishImage = faker.image.food();
-  let randomTip = faker.commerce.productDescription();
-  let randomFeature = faker.commerce.productAdjective();
-  let randomTag = faker.commerce.productAdjective();
-
-  for (let id = 1; id <= 100; id++) {
+  for (var restaurantCount = 1; restaurantCount <= 100; restaurantCount++) {
     restaurantData[restaurantName] = randomRestaurantName;
 
     restaurantData[dishName1] = randomDishName;
@@ -50,9 +57,14 @@ function generateRestaurantData () {
 
     while (restuarantData[tags].length < randomInteger) {
       restaurantData[tags].push(randomTag);
-
-
     }
-    }
+
+    restaurantEntries.push(restaurantData);
   }
 }
+
+let generatedRestaurants = generateIndividualRestaurantData();
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+});
