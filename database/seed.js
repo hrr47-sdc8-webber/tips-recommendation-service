@@ -1,18 +1,6 @@
 const faker = require('faker');
-const fs = require('fs');
-const mysql = require('mysql');
-const connection = require('config');
-
-const port = 6070
 
 let restaurantEntries = [];
-
-let randomRestaurantName = faker.company.companyName();
-let randomDishName = faker.commerce.product();
-let randomDishImage = faker.image.food();
-let randomTip = faker.commerce.productDescription();
-let randomFeature = faker.commerce.productAdjective();
-let randomTag = faker.commerce.productAdjective();
 
 function generateIndividualRestaurantData() {
 
@@ -29,45 +17,43 @@ function generateIndividualRestaurantData() {
     tags: []
   };
 
-  for (var restaurantCount = 1; restaurantCount <= 100; restaurantCount++) {
-    restaurantData[restaurantName] = randomRestaurantName;
+  restaurantData['restaurantName'] = faker.company.companyName();
 
-    restaurantData[dishName1] = randomDishName;
-    restaurantData[dishName2] = randomDishName;
-    restaurantData[dishName3] = randomDishName;
+  restaurantData['dishName1'] = faker.commerce.product();
+  restaurantData['dishName2'] = faker.commerce.product();
+  restaurantData['dishName3'] = faker.commerce.product();
 
-    restaurantData[dishImage1] = randomDishImage;
-    restaurantData[dishImage2] = randomDishImage;
-    restaurantData[dishImage3] = randomDishImage;
+  restaurantData['dishImage1'] = faker.image.food();
+  restaurantData['dishImage2'] = faker.image.food();
+  restaurantData['dishImage3'] = faker.image.food();
 
-    restaurantData[tip] = randomTip;
+  restaurantData['tip'] = faker.lorem.sentence();
 
-    // need to push a random # of values between 1 and 10 to features array and to tags array
-    function getRandomInteger(min, max) {
-      return Math.floor(Math.random() * (max-min + 1)) + min;
-    };
+  // need to push a random # of values between 1 and 10 to features array and to tags array
+  function getRandomInteger(min, max) {
+    return Math.floor(Math.random() * (max-min + 1)) + min;
+  };
 
-    let randomInteger = getRandomInteger(1, 10);
+  let randomInteger = getRandomInteger(1, 10);
 
-    while (restaurantData[features].length < randomInteger) {
-      restaurantData[features].push(randomFeature);
-    }
+  while (restaurantData['features'].length < randomInteger) {
+    restaurantData['features'].push(faker.commerce.productAdjective());
+  }
 
-    randomInteger = getRandomInteger(1, 20);
+  randomInteger = getRandomInteger(1, 20);
 
-    while (restuarantData[tags].length < randomInteger) {
-      restaurantData[tags].push(randomTag);
-    }
+  while (restaurantData['tags'].length < randomInteger) {
+    restaurantData['tags'].push(faker.commerce.productAdjective());
+  }
 
-    restaurantEntries.push(restaurantData);
+  restaurantEntries.push(restaurantData);
+}
+
+function generateBulkRestaurantData(totalNumberOfEntries) {
+  while (restaurantEntries.length < totalNumberOfEntries) {
+    generateIndividualRestaurantData();
+    console.log(restaurantEntries);
   }
 }
-connection.connect();
-// let generateRestaurant = generateIndividualRestaurantData();
-app.get('/', function(req, res) {
-  connection.query('INSERT INTO Restaurants VALUES (' + restaurantData[restaurantName] + ','+ restaurantData[dishName1] + ',' + restaurantData[dishImage1] + ',' + restaurantData[dishName2] + ', ' ')')
-})
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-});
+generateBulkRestaurantData(100);
