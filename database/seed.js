@@ -35,7 +35,6 @@ function generateIndividualRestaurantData() {
 
   restaurantData['tip'] = faker.lorem.sentence();
 
-  // need to push a random # of values between 1 and 10 to features array and to tags array
   function getRandomInteger(min, max) {
     return Math.floor(Math.random() * (max-min + 1)) + min;
   };
@@ -44,7 +43,6 @@ function generateIndividualRestaurantData() {
 
   while (restaurantData['features'].length < randomInteger) {
     restaurantData['features'].push(faker.commerce.productAdjective());
-    // console.log(restaurantData['features']);
   }
 
   randomInteger = getRandomInteger(1, 20);
@@ -61,7 +59,6 @@ for (restaurantCount = 0; restaurantCount < 100; restaurantCount++) {
 
   let columns = `restaurant_name, dish_name1, dish_image1, dish_name2, dish_image2, dish_name3, dish_image3, tip, features, tags`;
   let values = '"' + restaurantData['restaurantName'] + '", ' + '"' + restaurantData['dishName1'] + '", ' + '"' + restaurantData['dishImage1'] + '", ' + '"' + restaurantData['dishName2'] + '", ' + '"' + restaurantData['dishImage2'] + '", ' + '"' + restaurantData['dishName3'] + '", ' + '"' + restaurantData['dishImage3'] + '", ' + '"' + restaurantData['tip'] + '", ' + '"' + restaurantData['features'] + '", ' + '"' + restaurantData['tags'] + '"'
-  console.log(values);
 
   connection.query("INSERT INTO Restaurants (" + columns + ") VALUES (" + values + ")", (error, results, fields) => {
       if (error) {
@@ -72,31 +69,3 @@ for (restaurantCount = 0; restaurantCount < 100; restaurantCount++) {
       console.log(results);
     });
 }
-
-// for (var i = 0; i < restaurantEntries.length; i++) {
-//   // console.log(restaurantEntries);
-//   console.log(restaurantEntries[0]);
-//   let currentRestaurantName = restaurantEntries[i]['restaurantName'];
-//   let currentDishName1 = restaurantEntries[i]['dishName1'];
-//   let currentDishImage1 = restaurantEntries[i]['dishImage1'];
-//   let currentDishName2 = restaurantEntries[i]['dishName2'];
-//   let currentDishImage2 = restaurantEntries[i]['dishImage2'];
-//   let currentDishName3 = restaurantEntries[i]['dishName3'];
-//   let currentDishImage3 = restaurantEntries[i]['dishImage3'];
-//   let currentTip = restaurantEntries[i]['tip'];
-//   let currentFeatures = restaurantEntries[i]['features'];
-//   let currentTags = restaurantEntries[i]['tags'];
-
-//   let columns = `restaurant_name, dish_name1, dish_image1, dish_name2, dish_image2, dish_name3, dish_image3, tip, features, tags`;
-
-//   let values = currentRestaurantName + ', ' + currentDishName1 + ', ' + currentDishImage1 + ', ' + currentDishName2 + ', ' + currentDishImage2 + ', ' + currentDishName3 + ', ' + currentDishImage3 + ', ' + currentTip + ', ' + currentFeatures + ', ' + currentTags;
-
-//   connection.query("INSERT INTO Restaurants (" + columns + ") VALUES (" + values + ")", (error, results, fields) => {
-//     //   if (error) {
-//     //     console.log(error);
-//     //     return;
-//     //   }
-
-//     //   console.log(results);
-//     });
-// }
