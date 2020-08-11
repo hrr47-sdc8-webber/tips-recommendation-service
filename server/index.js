@@ -9,8 +9,9 @@ const port = 6070
 
 connection.connect();
 
-app.get('/', function(req, res) {
-  connection.query('SELECT * FROM Restaurants', (error, results, fields) => {
+app.get('/api/tips/:id', function(req, res) {
+  let restaurantId = req.params.id;
+  connection.query('SELECT * FROM Restaurants WHERE id = ' + restaurantId, (error, results, fields) => {
     if (error) {
       console.log(error);
       return;
