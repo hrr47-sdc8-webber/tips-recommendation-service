@@ -1,22 +1,21 @@
 const express = require('express');
 const app = express();
-const mysql = require('mysql');
-const config = require('../database/config.js')
-
-const connection = mysql.createConnection(config);
+const db = require('../database/index.js');
 
 const port = 6070
 
-connection.connect();
+app.use(express.json());
 
 app.get('/api/tips/:id', function(req, res) {
   let restaurantId = req.params.id;
-  connection.query('SELECT * FROM Restaurants WHERE id = ' + restaurantId, (error, results, fields) => {
+  db.getRestaurantInfo(restaurantId, function(error, data) {
     if (error) {
-      console.log(error);
-      return;
+      console.log('Error at server GET request');
+    } else {
+      console.log('Successful server GET request');
+      console.log(data);
+      res.send(data);
     }
-    console.log(results[0]);
   });
 });
 
