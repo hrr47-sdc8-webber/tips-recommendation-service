@@ -23,6 +23,19 @@ let getRestaurantInfo = function(restaurantId, callback) {
   });
 };
 
+let getRestaurantArticles = function(articleTag, callback) {
+  connection.query('SELECT * FROM Articles WHERE tags LIKE %{$' + articleTag + '}', (error, results, fields) => {
+    if (error) {
+      console.log('Error at getRestaurantArticles in database index file');
+      callback(error, null);
+      return;
+    }
+    console.log('Success at getRestaurantArticles in database index file');
+    callback(null, results);
+  });
+};
+
 module.exports = {
-  getRestaurantInfo
+  getRestaurantInfo,
+  getRestaurantArticles
 };
