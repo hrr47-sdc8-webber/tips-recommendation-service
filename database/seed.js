@@ -6,6 +6,8 @@ const connection = mysql.createConnection(config);
 
 connection.connect();
 
+// RESTAURANT SEED
+
 let restaurantData = {
   restaurantName: '',
   dishName1: '',
@@ -55,7 +57,7 @@ function generateIndividualRestaurantData() {
   return restaurantData;
 }
 
-for (restaurantCount = 0; restaurantCount < 100; restaurantCount++) {
+for (let restaurantCount = 0; restaurantCount < 100; restaurantCount++) {
   let restaurantObject = generateIndividualRestaurantData();
 
   let columns = `restaurant_name, dish_name1, dish_image1, dish_name2, dish_image2, dish_name3, dish_image3, tip, features, tags`;
@@ -71,4 +73,51 @@ for (restaurantCount = 0; restaurantCount < 100; restaurantCount++) {
     });
 }
 
-// TO DO: Create generated data for Articles table
+// ARTICLES SEED
+
+let articleData = {
+  articleTitle: '',
+  articleImage: '',
+  articleUrl: '',
+  articleTags: []
+};
+
+let articles = [];
+
+function generateIndividualArticleData() {
+
+  articleData['articleTitle'] = faker.lorem.sentence();
+
+  articleData['articleImage'] = faker.image.nightlife();
+  articleData['articleUrl'] = faker.lorem.slug();
+
+  function getRandomInteger(min, max) {
+    return Math.floor(Math.random() * (max-min + 1)) + min;
+  };
+
+  // STRETCH CONSIDERATION: prevent duplicate faker results
+
+  randomInteger = getRandomInteger(1, 20);
+
+  while (articleData['articleTags'].length < randomInteger) {
+    articleData['articleTags'].push(faker.commerce.productAdjective());
+  }
+
+  return articleData;
+}
+
+for (let articleCount = 0; articleCount < 100; articleCount++) {
+  let articleObject = generateIndividualArticleData();
+
+  let columns = `title, image, url, tags`;
+  let values = '"' + articleData['articleTitle'] + '", ' + '"' + articleData['articleImage'] + '", ' + '"' + articleData['articleUrl'] + '", ' + '"' + articleData['articleTags'] + '"'
+
+  connection.query("INSERT INTO Articles (" + columns + ") VALUES (" + values + ")", (error, results, fields) => {
+      if (error) {
+        console.log(error);
+        return;
+      }
+
+      console.log(results);
+    });
+}
