@@ -36,11 +36,11 @@
     }
   },
   "scripts": {
-    "test": "jest",
+    "airbnb": "eslint --ignore-path .gitignore .",
     "seed": "node database/seed.js",
     "server": "node server/index.js",
     "start": "nodemon server/index.js",
-    "pretest": "eslint --ignore-path .gitignore ."
+    "test": "jest"
   },
   "repository": {
     "type": "git",
