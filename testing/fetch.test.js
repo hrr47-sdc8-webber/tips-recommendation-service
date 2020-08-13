@@ -1,9 +1,11 @@
 // TESTS DATA FETCHING
 
-import React from "react";
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-import User from "./user";
+import React from 'react';
+import { shallow, mount, render } from 'enzyme';
+
+import Foo from '../client/App.jsx';
+
+const wrapper = shallow(<Foo />);
 
 let container = null;
 beforeEach(() => {
