@@ -61,7 +61,8 @@ for (let restaurantCount = 0; restaurantCount < 100; restaurantCount++) {
   let restaurantObject = generateIndividualRestaurantData();
 
   let columns = `restaurant_name, dish_name1, dish_image1, dish_name2, dish_image2, dish_name3, dish_image3, tip, features, tags`;
-  let values = '"' + restaurantData['restaurantName'] + '", ' + '"' + restaurantData['dishName1'] + '", ' + '"' + restaurantData['dishImage1'] + '", ' + '"' + restaurantData['dishName2'] + '", ' + '"' + restaurantData['dishImage2'] + '", ' + '"' + restaurantData['dishName3'] + '", ' + '"' + restaurantData['dishImage3'] + '", ' + '"' + restaurantData['tip'] + '", ' + '"' + restaurantData['features'] + '", ' + '"' + restaurantData['tags'] + '"'
+
+  let values = `"${restaurantData['restaurantName']}", "${restaurantData['dishName1']}", "${restaurantData['dishImage1']}", "${restaurantData['dishName2']}", "${restaurantData['dishImage2']}", "${restaurantData['dishName3']}", "${restaurantData['dishImage3']}", "${restaurantData['tip']}", "${restaurantData['features']}", "${restaurantData['tags']}"`
 
   connection.query("INSERT INTO Restaurants (" + columns + ") VALUES (" + values + ")", (error, results, fields) => {
       if (error) {
@@ -110,7 +111,8 @@ for (let articleCount = 0; articleCount < 100; articleCount++) {
   let articleObject = generateIndividualArticleData();
 
   let columns = `title, image, url, tags`;
-  let values = '"' + articleData['articleTitle'] + '", ' + '"' + articleData['articleImage'] + '", ' + '"' + articleData['articleUrl'] + '", ' + '"' + articleData['articleTags'] + '"'
+
+  let values = `"${articleData['articleTitle']}", "${articleData['articleImage']}", "${articleData['articleUrl']}", "${articleData['articleTags']}"`
 
   connection.query("INSERT INTO Articles (" + columns + ") VALUES (" + values + ")", (error, results, fields) => {
       if (error) {
