@@ -22,15 +22,15 @@
         <section id='what-to-order'>
           <h3>WHAT TO ORDER</h3>
           <figure class='dish'>
-            <img src="" alt="">
+            <img src='' alt=''>
             <figcaption>DISH NAME</figcaption>
           </figure>
           <figure class='dish'>
-            <img src="" alt="">
+            <img src='' alt=''>
             <figcaption>DISH NAME</figcaption>
           </figure>
           <figure class='dish'>
-            <img src="" alt="">
+            <img src='' alt=''>
             <figcaption>DISH NAME</figcaption>
           </figure>
         </section>
@@ -42,7 +42,20 @@
           <hr>
         </section>
 
-        <section id='known-for'></section>
+        <section id='known-for'>
+          <figure class='feature'>
+            <img src='' alt=''>
+            <figcaption>FEATURE</figcaption>
+          </figure>
+          <figure class='feature'>
+            <img src='' alt=''>
+            <figcaption>FEATURE</figcaption>
+          </figure>
+          <figure class='feature'>
+            <img src='' alt=''>
+            <figcaption>FEATURE</figcaption>
+          </figure>
+        </section>
 
         <section id='articles'></section>
       );
