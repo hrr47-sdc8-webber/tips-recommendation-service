@@ -5,6 +5,7 @@
   "main": ".eslintrc.js",
   "dependencies": {
     "@jest/globals": "^26.4.0",
+    "axios": "^0.19.2",
     "babel-cli": "^6.26.0",
     "babel-preset-airbnb": "^5.0.0",
     "babel-preset-react-app": "^3.1.2",

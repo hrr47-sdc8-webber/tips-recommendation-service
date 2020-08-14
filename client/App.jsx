@@ -4,6 +4,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+const axios = require('axios');
+
 class App extends React.Component {
   constructor(props) {
     super(props);
