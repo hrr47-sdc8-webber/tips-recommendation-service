@@ -17,7 +17,28 @@
     }
 
     render() {
-      return ();
+      return (
+
+        <section id='what-to-order'>
+          <h3>WHAT TO ORDER</h3>
+          <figure class='dish'>
+            <img src="" alt="">
+            <figcaption>DISH NAME</figcaption>
+          </figure>
+          <figure class='dish'>
+            <img src="" alt="">
+            <figcaption>DISH NAME</figcaption>
+          </figure>
+          <figure class='dish'>
+            <img src="" alt="">
+            <figcaption>DISH NAME</figcaption>
+          </figure>
+        </section>
+
+        <section id='insider-tip'></section>
+        <section id='known-for'></section>
+        <section id='articles'></section>
+      );
     }
   }
 
