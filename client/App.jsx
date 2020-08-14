@@ -57,7 +57,16 @@
           </figure>
         </section>
 
-        <section id='articles'></section>
+        <section id='articles'>
+          <figure class='article'>
+            <img src='' alt=''>
+            <figcaption>ARTICLE</figcaption>
+          </figure>
+          <figure class='article'>
+            <img src='' alt=''>
+            <figcaption>ARTICLE</figcaption>
+          </figure>
+        </section>
       );
     }
   }
