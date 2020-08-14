@@ -35,8 +35,15 @@
           </figure>
         </section>
 
-        <section id='insider-tip'></section>
+        <section id='insider-tip'>
+          <h3>INSIDER TIP</h3>
+          <hr>
+          <p>RANDOM TEXT HERE</p>
+          <hr>
+        </section>
+
         <section id='known-for'></section>
+
         <section id='articles'></section>
       );
     }
