@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const config = require('../database/config.js')
+const config = require('./config.js');
 
 const connection = mysql.createConnection(config);
 
@@ -11,8 +11,8 @@ connection.connect((err) => {
   }
 });
 
-let getRestaurantInfo = function(restaurantId, callback) {
-  connection.query('SELECT * FROM Restaurants WHERE id = ' + restaurantId, (error, results, fields) => {
+const getRestaurantInfo = function (restaurantId, callback) {
+  connection.query(`SELECT * FROM Restaurants WHERE id = ${restaurantId}`, (error, results) => {
     if (error) {
       console.log('Error at getRestaurantInfo in database index file');
       callback(error, null);
@@ -23,8 +23,8 @@ let getRestaurantInfo = function(restaurantId, callback) {
   });
 };
 
-let getRestaurantArticles = function(articleTag, callback) {
-  connection.query('SELECT * FROM Articles WHERE tags LIKE %{$' + articleTag + '}', (error, results, fields) => {
+const getRestaurantArticles = function (articleTag, callback) {
+  connection.query(`SELECT * FROM Articles WHERE tags LIKE %{$${articleTag}}`, (error, results) => {
     if (error) {
       console.log('Error at getRestaurantArticles in database index file');
       callback(error, null);
@@ -37,5 +37,5 @@ let getRestaurantArticles = function(articleTag, callback) {
 
 module.exports = {
   getRestaurantInfo,
-  getRestaurantArticles
+  getRestaurantArticles,
 };

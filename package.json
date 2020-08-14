@@ -4,6 +4,7 @@
   "description": "> Project description",
   "main": ".eslintrc.js",
   "dependencies": {
+    "@jest/globals": "^26.4.0",
     "babel-cli": "^6.26.0",
     "babel-preset-airbnb": "^5.0.0",
     "babel-preset-react-app": "^3.1.2",
@@ -13,11 +14,13 @@
     "jest-enzyme": "^7.1.2",
     "mysql": "^2.18.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "sinon": "^9.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
     "@testing-library/react": "^10.4.8",
     "babel-jest": "^26.3.0",
     "enzyme": "^3.11.0",
