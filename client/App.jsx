@@ -13,11 +13,22 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-
+    axios.all([getTips(), getArticles()])
+    .then(axios.spread(function (tips, articles) {
+      console.log('Client GET requests complete');
+    }));
   }
 
   componentWillUnmount() {
 
+  }
+
+  function getTips() {
+    return axios.get('/api/tips/:id');
+  }
+
+  function getArticles() {
+    return axios.get('/api/articles/:id');
   }
 
   render() {
