@@ -13,26 +13,19 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.all([getTips(), getArticles()])
-    .then(axios.spread(function (tips, articles) {
-      console.log('Client GET requests complete');
-    }));
-  }
-
-  componentWillUnmount() {
-
-  }
-
-  function getTips() {
-    return axios.get('/api/tips/:id');
-  }
-
-  function getArticles() {
-    return axios.get('/api/articles/:id');
-  }
+    console.log('component loaded');
+    axios.get('/api/tips/:id')
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    }
 
   render() {
     return (
+    <div>
       <section id='what-to-order'>
         <h3>WHAT TO ORDER</h3>
         <figure class='dish'>
@@ -81,10 +74,9 @@ class App extends React.Component {
           <figcaption>ARTICLE</figcaption>
         </figure>
       </section>
+    </div>
     );
   }
 }
 
 export default App;
-
-ReactDOM.render(<App />, document.getElementById('app'));
