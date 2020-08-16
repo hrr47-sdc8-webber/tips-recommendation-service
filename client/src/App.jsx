@@ -73,6 +73,7 @@ class App extends React.Component {
           <img src='' alt=''/>
           <figcaption>ARTICLE</figcaption>
         </figure>
+        <button type="button">SHOW ALL (amount of articles hidden)</button>
       </section>
     </div>
     );
