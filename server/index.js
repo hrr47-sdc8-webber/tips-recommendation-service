@@ -7,6 +7,8 @@ const port = 6070;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
+
 
 app.get('/api/tips/:id', (req, res) => {
   console.log('Tips API called');
@@ -17,7 +19,7 @@ app.get('/api/tips/:id', (req, res) => {
       console.log('Error at server/restaurants GET request');
     } else {
       console.log('Successful server/restaurants GET request');
-      console.log(data);
+      // console.log(data);
       res.send(data);
     }
   });

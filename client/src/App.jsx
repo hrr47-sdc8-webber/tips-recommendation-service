@@ -3,20 +3,42 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-const axios = require('axios');
+import WhatToOrder from './WhatToOrder.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = '';
+    this.state = {
+      dishName1: '',
+      dishImage1: '',
+      dishName2: '',
+      dishImage2: '',
+      dishName3: '',
+      dishImage3: '',
+      tip: '',
+      features: '',
+      tags: '',
+    };
   }
 
   componentDidMount() {
-    console.log('component loaded');
-    axios.get('/api/tips/:id')
+    let self = this;
+    axios.get('/api/tips' + window.location.pathname.substring(0, window.location.pathname.length - 1))
     .then(function (response) {
-      console.log(response);
+      const data = response.data[0];
+      console.log(data);
+      self.setState({
+        dishName1: data.dish_name1,
+        dishImage1: data.dish_image1,
+        dishName2: data.dish_name2,
+        dishImage2: data.dish_image2,
+        dishName3: data.dish_name3,
+        dishImage3: data.dish_image3,
+        tip: '',
+        features: '',
+        tags: '',
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -27,19 +49,7 @@ class App extends React.Component {
     return (
     <div>
       <section id='what-to-order'>
-        <h3>WHAT TO ORDER</h3>
-        <figure class='dish'>
-          <img src='' alt=''/>
-          <figcaption>DISH NAME</figcaption>
-        </figure>
-        <figure class='dish'>
-          <img src='' alt=''/>
-          <figcaption>DISH NAME</figcaption>
-        </figure>
-        <figure class='dish'>
-          <img src='' alt=''/>
-          <figcaption>DISH NAME</figcaption>
-        </figure>
+        {this.state.dishName1}
       </section>
 
       <section id='insider-tip'>
