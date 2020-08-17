@@ -4,5 +4,5 @@ import App from './App';
 
 ReactDOM.render(
   <div><App/></div>,
-  document.getElementById('app')
+  document.getElementById('tips-recommendations-section')
 );
