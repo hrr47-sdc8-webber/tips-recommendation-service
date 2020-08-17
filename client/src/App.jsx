@@ -49,7 +49,7 @@ class App extends React.Component {
     return (
     <div>
       <section id='what-to-order'>
-        {this.state.dishName1}
+        <WhatToOrder dishName1 = {this.state.dishName1} dishImage1 = {this.state.dishImage1} dishName2 = {this.state.dishName2} dishImage2 = {this.state.dishImage2} dishName3 = {this.state.dishName3} dishImage3 = {this.state.dishImage3}/>
       </section>
 
       <section id='insider-tip'>
