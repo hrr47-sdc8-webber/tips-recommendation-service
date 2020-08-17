@@ -3,8 +3,11 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import WhatToOrder from './WhatToOrder.jsx';
 import InsiderTip from './InsiderTip.jsx';
+import KnownFor from './KnownFor.jsx';
+
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -78,18 +81,7 @@ class App extends React.Component {
 
       <section id='known-for'>
         <StyledTitles>KNOWN FOR</StyledTitles>
-        <figure class='feature'>
-          <img src='' alt=''/>
-          <figcaption>FEATURE</figcaption>
-        </figure>
-        <figure class='feature'>
-          <img src='' alt=''/>
-          <figcaption>FEATURE</figcaption>
-        </figure>
-        <figure class='feature'>
-          <img src='' alt=''/>
-          <figcaption>FEATURE</figcaption>
-        </figure>
+        <KnownFor features = {this.state.features} />
       </section>
 
       <section id='articles'>
