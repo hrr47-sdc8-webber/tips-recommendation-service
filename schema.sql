@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS zagatTips;
+
+CREATE DATABASE zagatTips;
+
 -- ---
 -- Globals
 -- ---
