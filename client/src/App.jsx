@@ -4,6 +4,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WhatToOrder from './WhatToOrder.jsx';
+import InsiderTip from './InsiderTip.jsx';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -12,6 +13,7 @@ const StyledContainer = styled.div`
   height: 884px;
   padding: 0 24px 40px;
   margin-top: 40px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 `;
 
 const StyledTitles = styled.h3`
@@ -51,9 +53,9 @@ class App extends React.Component {
         dishImage2: data.dish_image2,
         dishName3: data.dish_name3,
         dishImage3: data.dish_image3,
-        tip: '',
-        features: '',
-        tags: '',
+        tip: data.tip,
+        features: data.features,
+        tags: data.tags,
       });
     })
     .catch(function (error) {
@@ -71,9 +73,7 @@ class App extends React.Component {
 
       <section id='insider-tip'>
         <StyledTitles>INSIDER TIP</StyledTitles>
-        <hr/>
-        <p>RANDOM TEXT HERE</p>
-        <hr/>
+        <InsiderTip tip = {this.state.tip}/>
       </section>
 
       <section id='known-for'>
