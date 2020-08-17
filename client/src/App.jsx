@@ -1,20 +1,18 @@
-// TO DO:
-  // IF NO ARTICLES FOR RESTAURANT EXIST, DO NOT INCLUDE ARTICLES SECTION OF PAGE
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import WhatToOrder from './WhatToOrder.jsx';
 import InsiderTip from './InsiderTip.jsx';
 import KnownFor from './KnownFor.jsx';
+import ZagatMentions from './ZagatMentions.jsx';
 
 import axios from 'axios';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   width: 845px;
-  height: 884px;
-  padding: 0 24px 40px;
+  height: auto;
+  padding: 0 24px 40px 24px;
   margin-top: 40px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 `;
@@ -31,6 +29,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      restaurantName: '',
       dishName1: '',
       dishImage1: '',
       dishName2: '',
@@ -40,6 +39,7 @@ class App extends React.Component {
       tip: '',
       features: '',
       tags: '',
+      articles: '',
     };
   }
 
@@ -48,8 +48,8 @@ class App extends React.Component {
     axios.get('/api/tips' + window.location.pathname.substring(0, window.location.pathname.length - 1))
     .then(function (response) {
       const data = response.data[0];
-      console.log(data);
       self.setState({
+        restaurantName: data.restaurant_name,
         dishName1: data.dish_name1,
         dishImage1: data.dish_image1,
         dishName2: data.dish_name2,
@@ -63,8 +63,34 @@ class App extends React.Component {
     })
     .catch(function (error) {
       console.log(error);
+    })
+    .then(function () {
+      self.fetchArticles();
     });
-    }
+  }
+
+  fetchArticles() {
+    let self = this;
+    const restaurantTags = self.state.tags.split(',');
+
+    axios.get('/api/articles' + window.location.pathname.substring(0, window.location.pathname.length - 1))
+
+    .then(function (articles) {
+      articles.data.map((article) => {
+        const articleTags = article.tags.split(',')
+        for (var i = 0; i < articleTags.length; i++) {
+          if (restaurantTags.indexOf(articleTags[i] !== -1 && articles.data.indexOf(article) === -1)) {
+            self.setState({
+              articles: article
+            })
+          }
+        }
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   render() {
     return (
@@ -85,16 +111,8 @@ class App extends React.Component {
       </section>
 
       <section id='articles'>
-        <StyledTitles>ZAGAT MENTIONS OF RESTAURANT NAME</StyledTitles>
-        <figure class='article'>
-          <img src='' alt=''/>
-          <figcaption>ARTICLE</figcaption>
-        </figure>
-        <figure class='article'>
-          <img src='' alt=''/>
-          <figcaption>ARTICLE</figcaption>
-        </figure>
-        <button type="button">SHOW ALL (amount of articles hidden)</button>
+        <StyledTitles>ZAGAT MENTIONS OF {this.state.restaurantName}</StyledTitles>
+        <ZagatMentions articles = {this.state.articles} />
       </section>
     </StyledContainer>
     );
