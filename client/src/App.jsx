@@ -5,6 +5,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import WhatToOrder from './WhatToOrder.jsx';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const StyledContainer = styled.div`
+  width: 845px;
+  height: 884px;
+  padding: 0 24px 40px;
+  margin-top: 40px;
+`;
+
+const StyledTitles = styled.h3`
+  padding-top: 33px;
+  color: #656666;
+  font-size: 16px;
+  letter-spacing: .086em;
+  text-transform: uppercase;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -47,19 +63,21 @@ class App extends React.Component {
 
   render() {
     return (
-    <div>
+    <StyledContainer>
       <section id='what-to-order'>
+        <StyledTitles>WHAT TO ORDER</StyledTitles>
         <WhatToOrder dishName1 = {this.state.dishName1} dishImage1 = {this.state.dishImage1} dishName2 = {this.state.dishName2} dishImage2 = {this.state.dishImage2} dishName3 = {this.state.dishName3} dishImage3 = {this.state.dishImage3}/>
       </section>
 
       <section id='insider-tip'>
-        <h3>INSIDER TIP</h3>
+        <StyledTitles>INSIDER TIP</StyledTitles>
         <hr/>
         <p>RANDOM TEXT HERE</p>
         <hr/>
       </section>
 
       <section id='known-for'>
+        <StyledTitles>KNOWN FOR</StyledTitles>
         <figure class='feature'>
           <img src='' alt=''/>
           <figcaption>FEATURE</figcaption>
@@ -75,6 +93,7 @@ class App extends React.Component {
       </section>
 
       <section id='articles'>
+        <StyledTitles>ZAGAT MENTIONS OF RESTAURANT NAME</StyledTitles>
         <figure class='article'>
           <img src='' alt=''/>
           <figcaption>ARTICLE</figcaption>
@@ -85,7 +104,7 @@ class App extends React.Component {
         </figure>
         <button type="button">SHOW ALL (amount of articles hidden)</button>
       </section>
-    </div>
+    </StyledContainer>
     );
   }
 }
