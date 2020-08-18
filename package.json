@@ -9,6 +9,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-airbnb": "^5.0.0",
     "babel-preset-react-app": "^3.1.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "jest-environment-enzyme": "^7.1.2",

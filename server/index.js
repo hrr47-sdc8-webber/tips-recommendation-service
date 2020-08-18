@@ -1,16 +1,18 @@
 const express = require('express');
 const db = require('../database/index.js');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const port = 6070;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
 
 
-app.get('/api/tips/:id', (req, res) => {
+app.get(`http://localhost:${port}/api/tips/:id`, (req, res) => {
   const restaurantId = req.params.id;
 
   db.getRestaurantInfo(restaurantId, (error, data) => {
@@ -22,7 +24,7 @@ app.get('/api/tips/:id', (req, res) => {
   });
 });
 
-app.get('/api/articles/:id', (req, res) => {
+app.get(`http://localhost:${port}/api/articles/:id`, (req, res) => {
   db.getRestaurantArticles((error, data) => {
     if (error) {
       console.log('Error at server/articles GET request');
