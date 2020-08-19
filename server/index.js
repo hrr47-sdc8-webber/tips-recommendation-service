@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
 
 
-app.get(`http://localhost:${port}/api/tips/:id`, (req, res) => {
+app.get(`/api/tips/:id`, (req, res) => {
   const restaurantId = req.params.id;
 
   db.getRestaurantInfo(restaurantId, (error, data) => {
@@ -24,7 +24,7 @@ app.get(`http://localhost:${port}/api/tips/:id`, (req, res) => {
   });
 });
 
-app.get(`http://localhost:${port}/api/articles/:id`, (req, res) => {
+app.get(`/api/articles/:id`, (req, res) => {
   db.getRestaurantArticles((error, data) => {
     if (error) {
       console.log('Error at server/articles GET request');

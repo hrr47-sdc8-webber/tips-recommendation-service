@@ -57,7 +57,7 @@ class ZagatMentions extends React.Component {
   render() {
     return (
       <MentionsContainer>
-        <ArticleContainer href="#" class='article'>
+        <ArticleContainer href="#" className='article'>
           <ArticleImage src={this.props.articles.image} alt='dining'/>
           <ArticleTitle>{this.props.articles.title}</ArticleTitle>
         </ArticleContainer>

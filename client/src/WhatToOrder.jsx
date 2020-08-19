@@ -35,15 +35,15 @@ class WhatToOrder extends React.Component {
   render() {
     return (
       <WhatToOrderContainer>
-        <StyledDishContainer class='dish'>
+        <StyledDishContainer className='dish'>
           <StyledImage src={this.props.dishImage1} alt="food"/>
           <StyledCaption>{this.props.dishName1}</StyledCaption>
         </StyledDishContainer>
-        <StyledDishContainer class='dish'>
+        <StyledDishContainer className='dish'>
           <StyledImage src={this.props.dishImage2} alt="food"/>
           <StyledCaption>{this.props.dishName2}</StyledCaption>
         </StyledDishContainer>
-        <StyledDishContainer class='dish'>
+        <StyledDishContainer className='dish'>
           <StyledImage src={this.props.dishImage3} alt="food"/>
           <StyledCaption>{this.props.dishName3}</StyledCaption>
         </StyledDishContainer>

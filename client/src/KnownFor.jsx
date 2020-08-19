@@ -38,7 +38,7 @@ class KnownFor extends React.Component {
     return (
       <KnownForContainer>
         {this.props.features.split(',').map((feature) => (
-          <figure class='feature'>
+          <figure className='feature'>
             <KnownForIcon src={icons[Math.floor(Math.random() * (4))]} alt='icon'/>
             <KnownForFont>{feature}</KnownForFont>
           </figure>

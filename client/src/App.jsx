@@ -9,6 +9,8 @@ import ZagatMentions from './ZagatMentions.jsx';
 import axios from 'axios';
 import styled from 'styled-components';
 
+const port = 6070;
+
 const StyledContainer = styled.div`
   width: 845px;
   height: auto;
@@ -45,7 +47,7 @@ class App extends React.Component {
 
   componentDidMount() {
     let self = this;
-    axios.get('/api/tips' + window.location.pathname.substring(0, window.location.pathname.length - 1))
+    axios.get(`http://localhost:${port}/api/tips/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
     .then(function (response) {
       const data = response.data[0];
       self.setState({
@@ -73,7 +75,7 @@ class App extends React.Component {
     let self = this;
     const restaurantTags = self.state.tags.split(',');
 
-    axios.get('/api/articles' + window.location.pathname.substring(0, window.location.pathname.length - 1))
+    axios.get(`http://localhost:${port}/api/articles` + window.location.pathname.substring(0, window.location.pathname.length - 1))
 
     .then(function (articles) {
       articles.data.map((article) => {
