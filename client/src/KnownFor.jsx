@@ -27,7 +27,7 @@ const KnownForFont = styled.figcaption`
   text-align: center;
 `;
 
-const icons = ['../dist/icons/kids.svg', '../dist/icons/lunch.svg', '../dist/icons/placeholder.svg', '../dist/icons/takeout.svg'];
+const icons = ['http://localhost:6070/dist/icons/kids.svg', 'http://localhost:6070/dist/icons/lunch.svg', 'http://localhost:6070/dist/icons/placeholder.svg', 'http://localhost:6070/dist/icons/takeout.svg'];
 
 class KnownFor extends React.Component {
   constructor(props) {
