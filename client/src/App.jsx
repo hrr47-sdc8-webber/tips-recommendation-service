@@ -12,7 +12,8 @@ import styled from 'styled-components';
 const port = 6070;
 
 const StyledContainer = styled.div`
-  width: 845px;
+  width: 70%;
+  max-width: 900px;
   height: auto;
   padding: 0 24px 40px 24px;
   margin-top: 40px;
@@ -47,7 +48,7 @@ class App extends React.Component {
 
   componentDidMount() {
     let self = this;
-    axios.get(`http://localhost:${port}/api/tips/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
+    axios.get(`http://3.12.103.128:6070/api/tips/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
     .then(function (response) {
       const data = response.data[0];
       self.setState({
@@ -75,7 +76,7 @@ class App extends React.Component {
     let self = this;
     const restaurantTags = self.state.tags.split(',');
 
-    axios.get(`http://localhost:${port}/api/articles` + window.location.pathname.substring(0, window.location.pathname.length - 1))
+    axios.get(`http://3.12.103.128:6070/api/articles` + window.location.pathname.substring(0, window.location.pathname.length - 1))
 
     .then(function (articles) {
       articles.data.map((article) => {
