@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const port = 6070;
+const port = 3003;
 
 app.use(cors());
 app.use(express.json());
