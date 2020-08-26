@@ -1,14 +1,12 @@
 const faker = require('faker');
 const mysql = require('mysql');
-const config = require('./config.js');
+const config = require('./configFile.js');
 
 const connection = mysql.createConnection(config);
 
 connection.connect();
 
 // RESTAURANT SEED
-
-
 
 function generateIndividualRestaurantData() {
   let restaurantData = {
@@ -36,18 +34,18 @@ function generateIndividualRestaurantData() {
 
   restaurantData.tip = faker.lorem.sentence();
 
-  function getRandomInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  function getRandomInteger(max) {
+    return Math.floor(Math.random() * max);
   }
 
-  let randomInteger = getRandomInteger(1, 10);
+  let randomInteger = getRandomInteger(10);
 
   // STRETCH CONSIDERATION: prevent duplicate faker results
   while (restaurantData.features.length <= randomInteger) {
     restaurantData.features.push(faker.commerce.productAdjective());
   }
 
-  randomInteger = getRandomInteger(1, 20);
+  randomInteger = getRandomInteger(20);
 
   while (restaurantData.tags.length <= randomInteger) {
     restaurantData.tags.push(faker.commerce.productAdjective());
@@ -69,7 +67,6 @@ for (let restaurantCount = 0; restaurantCount < 100; restaurantCount += 1) {
       return;
     }
 
-    console.log(results);
   });
 }
 
@@ -115,7 +112,5 @@ for (let articleCount = 0; articleCount < 100; articleCount += 1) {
       console.log(error);
       return;
     }
-
-    console.log(results);
   });
 }
