@@ -25,4 +25,4 @@ build/
 # dist/
 
 # DB config
-# database/config.js
+/database/config.js

@@ -8,20 +8,22 @@ connection.connect();
 
 // RESTAURANT SEED
 
-const restaurantData = {
-  restaurantName: '',
-  dishName1: '',
-  dishImage1: '',
-  dishName2: '',
-  dishImage2: '',
-  dishName3: '',
-  dishImage3: '',
-  tip: '',
-  features: [],
-  tags: [],
-};
+
 
 function generateIndividualRestaurantData() {
+  let restaurantData = {
+    restaurantName: '',
+    dishName1: '',
+    dishImage1: '',
+    dishName2: '',
+    dishImage2: '',
+    dishName3: '',
+    dishImage3: '',
+    tip: '',
+    features: [],
+    tags: [],
+  };
+
   restaurantData.restaurantName = faker.company.companyName();
 
   restaurantData.dishName1 = faker.commerce.product();
@@ -41,13 +43,13 @@ function generateIndividualRestaurantData() {
   let randomInteger = getRandomInteger(1, 10);
 
   // STRETCH CONSIDERATION: prevent duplicate faker results
-  while (restaurantData.features.length < randomInteger) {
+  while (restaurantData.features.length <= randomInteger) {
     restaurantData.features.push(faker.commerce.productAdjective());
   }
 
   randomInteger = getRandomInteger(1, 20);
 
-  while (restaurantData.tags.length < randomInteger) {
+  while (restaurantData.tags.length <= randomInteger) {
     restaurantData.tags.push(faker.commerce.productAdjective());
   }
 
@@ -55,7 +57,7 @@ function generateIndividualRestaurantData() {
 }
 
 for (let restaurantCount = 0; restaurantCount < 100; restaurantCount += 1) {
-  generateIndividualRestaurantData();
+  let restaurantData = generateIndividualRestaurantData();
 
   const columns = 'restaurant_name, dish_name1, dish_image1, dish_name2, dish_image2, dish_name3, dish_image3, tip, features, tags';
 
