@@ -37,3 +37,33 @@ npm install -g webpack
 npm install
 ```
 
+___
+
+##CRUD operations
+
+GET `/api/restaurants/:id` -> lists information and related articles for restaurant with specified id
+
+POST `/api/restaurants` -> adds new restaurant. The following information is required in this template:
+  ```
+  {
+    restaurantName: ``.
+    dishName1: '',
+    dishImage1: '',
+    dishName2: '',
+    dishImage2: '',
+    dishName3: '',
+    dishImage3: '',
+    tip: '',
+    features: '',
+    tags: '',
+    articles: '',
+  }
+  ```
+
+PUT `/api/restaurants/:id` -> updates any values listed. Provide:
+```
+["nameOfKey", "value"]
+```
+
+DELETE `/api/restaurant/:id` -> deletes restaurant with specified id
+
