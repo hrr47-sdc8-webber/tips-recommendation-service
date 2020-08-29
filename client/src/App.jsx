@@ -33,84 +33,47 @@ class App extends React.Component {
     super(props);
     this.state = {
       restaurantName: '',
-      dishName1: '',
-      dishImage1: '',
-      dishName2: '',
-      dishImage2: '',
-      dishName3: '',
-      dishImage3: '',
+      featuredDishes: [],
       tip: '',
-      features: '',
-      tags: '',
-      articles: '',
+      knownFor: [],
+      articles: []
     };
   }
 
   componentDidMount() {
-    let self = this;
-    axios.get(`/api/tips/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
+    axios.get(`/api/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
     .then(function (response) {
       const data = response.data[0];
-      self.setState({
+      this.setState({
         restaurantName: data.restaurant_name,
-        dishName1: data.dish_name1,
-        dishImage1: data.dish_image1,
-        dishName2: data.dish_name2,
-        dishImage2: data.dish_image2,
-        dishName3: data.dish_name3,
-        dishImage3: data.dish_image3,
+        featuredDishes: data.featured_dishes,
         tip: data.tip,
-        features: data.features,
-        tags: data.tags,
+        knownFor: data.known_for,
+        articles: data.artcles
       });
     })
     .catch(function (error) {
       console.log(error);
     })
-    .then(function () {
-      self.fetchArticles();
-    });
   }
 
-  fetchArticles() {
-    let self = this;
-    const restaurantTags = self.state.tags.split(',');
-
-    axios.get(`/api/articles` + window.location.pathname.substring(0, window.location.pathname.length - 1))
-
-    .then(function (articles) {
-      articles.data.map((article) => {
-        const articleTags = article.tags.split(',')
-        for (var i = 0; i < articleTags.length; i++) {
-          if (restaurantTags.indexOf(articleTags[i] !== -1 && articles.data.indexOf(article) === -1)) {
-            self.setState({
-              articles: article
-            })
-          }
-        }
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
 
   render() {
     return (
     <StyledContainer>
       <section id='what-to-order'>
         <StyledTitles>WHAT TO ORDER</StyledTitles>
-        <WhatToOrder dishName1 = {this.state.dishName1} dishImage1 = {this.state.dishImage1} dishName2 = {this.state.dishName2} dishImage2 = {this.state.dishImage2} dishName3 = {this.state.dishName3} dishImage3 = {this.state.dishImage3}/>
+        <WhatToOrder dishes={this.state.featuredDishes}/>
       </section>
 
       <section id='insider-tip'>
         <StyledTitles>INSIDER TIP</StyledTitles>
-        <InsiderTip tip = {this.state.tip}/>
+        <InsiderTip tip={this.state.tip}/>
       </section>
 
       <section id='known-for'>
         <StyledTitles>KNOWN FOR</StyledTitles>
-        <KnownFor features = {this.state.features} />
+        <KnownFor features={this.state.knownFor} />
       </section>
 
       <section id='articles'>
