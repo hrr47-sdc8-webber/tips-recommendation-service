@@ -63,6 +63,7 @@ POST `/api/restaurants` -> adds new restaurant. The following information is req
 PUT `/api/restaurants/:id` -> updates any values listed. Provide:
 ```
 ["nameOfKey", "value"]
+
 ```
 
 DELETE `/api/restaurant/:id` -> deletes restaurant with specified id

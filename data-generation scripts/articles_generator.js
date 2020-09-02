@@ -16,7 +16,7 @@ function generateRandomArticle() {
 
 
 function writeArticles(writer, encoding, callback) {
-  let i = 500000;
+  let i = 50;
   let id = 0;
   function write() {
     let ok = true;
