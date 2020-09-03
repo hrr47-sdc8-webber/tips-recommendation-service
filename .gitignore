@@ -27,8 +27,6 @@ build/
 # DB config
 /database/configFile.js
 
-#csv files
-articles.csv
-restaurants.csv
+csv-files
 
 Commands.txt

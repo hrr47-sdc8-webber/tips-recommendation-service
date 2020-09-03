@@ -27,7 +27,16 @@ app.get(`/api/:id`, (req, res) => {
 app.post(`/api/restaurants`, (req, res) => {
   db.addRestaurant(req.body,(error, data) => {
     if (error) {
-      console.log('Error at server/restaurants GET request');
+      console.log('Error at server/restaurants POST request');
+    } else {
+      res.send(data);
+    }
+  })
+});
+app.put(`/api/restaurants/:id`, (req, res) => {
+  db.addRestaurant(req.body,(error, data) => {
+    if (error) {
+      console.log('Error at server/restaurants POST request');
     } else {
       res.send(data);
     }

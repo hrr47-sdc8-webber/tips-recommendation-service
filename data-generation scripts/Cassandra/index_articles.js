@@ -1,30 +1,22 @@
 const faker = require('faker');
 const fs = require('fs');
+const {randomNumGenerator} = require('../helper-functions.js');
 
-const writeArt = fs.createWriteStream('articles.csv');
-writeArt.write('id|article\n', 'utf8');
-
-function randomNumGenerator (max) {
-  return Math.floor(Math.random() * max + 1);
-}
-
-function generateRandomArticle() {
-  let randomNum = randomNumGenerator(367);
-  let articleImg = `https://zigat-media.s3.us-east-2.amazonaws.com/article_images/img+(${randomNum}).jpg`;
-  return [faker.lorem.sentence(), articleImg ];
-};
+const writeArt = fs.createWriteStream(__dirname +'/../../csv-files/Cassandra/indexes_articles.csv');
+writeArt.write('id|name|image\n', 'utf8');
 
 
-function writeArticles(writer, encoding, callback) {
-  let i = 50;
+function writeArticles(numOfArt, writer, encoding, callback) {
+  let i = numOfArt;
   let id = 0;
   function write() {
     let ok = true;
     do {
       i -= 1;
       id += 1;
-      const article = generateRandomArticle();
-      const data = `${id}|${article}\n`;
+      let randomNum = randomNumGenerator(797);
+      let articleImg = `https://zigat-media.s3.us-east-2.amazonaws.com/article_images/img+(${randomNum}).jpg`;
+      const data = `${id}|${faker.lorem.sentence()}|${articleImg}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {

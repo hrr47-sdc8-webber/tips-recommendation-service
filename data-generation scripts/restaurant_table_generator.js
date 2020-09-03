@@ -15,7 +15,7 @@ function getRandomDish() {
 }
 
 function writeRestaurants(writer, encoding, callback) {
-  let i = 10;
+  let i = 10000000;
   let id = 0;
   function write() {
     let ok = true;
@@ -40,7 +40,7 @@ function writeRestaurants(writer, encoding, callback) {
       let articles = [];
       randomNum = randomNumGenerator(20);
       for (let x = 0; x < randomNum; x++) {
-        let randomArticle = randomNumGenerator(50);
+        let randomArticle = randomNumGenerator(50000);
         if (articles.indexOf(randomArticle) === -1) {
           articles.push(randomArticle);
         }
