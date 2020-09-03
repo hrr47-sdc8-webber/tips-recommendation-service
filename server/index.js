@@ -8,17 +8,14 @@ const port = 3003;
 
 app.use(cors());
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, '../client/dist')));
-// app.use('/:id', express.static(path.join(__dirname, '../client/dist')));
+
 app.use(express.static('client/dist'));
 app.use('/:id', express.static('client/dist'));
 
-
-
-app.get(`/api/tips/:id`, (req, res) => {
+app.get(`/api/:id`, (req, res) => {
   const restaurantId = req.params.id;
 
-  db.getRestaurantInfo(restaurantId, (error, data) => {
+  db.getRestaurant(restaurantId, (error, data) => {
     if (error) {
       console.log('Error at server/restaurants GET request');
     } else {
@@ -27,14 +24,23 @@ app.get(`/api/tips/:id`, (req, res) => {
   });
 });
 
-app.get(`/api/articles/:id`, (req, res) => {
-  db.getRestaurantArticles((error, data) => {
+app.post(`/api/restaurants`, (req, res) => {
+  db.addRestaurant(req.body,(error, data) => {
     if (error) {
-      console.log('Error at server/articles GET request');
+      console.log('Error at server/restaurants POST request');
     } else {
       res.send(data);
     }
-  });
+  })
+});
+app.put(`/api/restaurants/:id`, (req, res) => {
+  db.addRestaurant(req.body,(error, data) => {
+    if (error) {
+      console.log('Error at server/restaurants POST request');
+    } else {
+      res.send(data);
+    }
+  })
 });
 
 app.listen(port, () => {

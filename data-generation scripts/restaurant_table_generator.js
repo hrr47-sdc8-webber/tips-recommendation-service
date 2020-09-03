@@ -13,7 +13,6 @@ function getRandomDish() {
 
   return [faker.commerce.productName(), dishImg ];
 }
-const randomFeatureGenerator = randomNumGenerator(14);
 
 function writeRestaurants(writer, encoding, callback) {
   let i = 10000000;
@@ -33,12 +32,18 @@ function writeRestaurants(writer, encoding, callback) {
       let knownFor = [];
       let randomNum = randomNumGenerator(5);
       for (let x = 0; x < randomNum; x++) {
-        knownFor.push(randomNumGenerator(14));
+        const randomFeature = randomNumGenerator(14);
+        if (knownFor.indexOf(randomFeature) === -1) {
+          knownFor.push(randomFeature);
+        }
       }
       let articles = [];
       randomNum = randomNumGenerator(20);
       for (let x = 0; x < randomNum; x++) {
-        articles.push(randomNumGenerator(500000));
+        let randomArticle = randomNumGenerator(50000);
+        if (articles.indexOf(randomArticle) === -1) {
+          articles.push(randomArticle);
+        }
       }
       const data = `${id}|${name}|${featuredDishes}|${featuredTip}|${knownFor}|${articles}\n`;
       if (i === 0) {

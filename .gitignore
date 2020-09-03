@@ -26,3 +26,7 @@ build/
 
 # DB config
 /database/configFile.js
+
+csv-files
+
+Commands.txt
