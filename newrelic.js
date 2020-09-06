@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['tips-recommendations-service'],
+  app_name: ['tips-rec-service'],
   /**
    * Your New Relic license key.
    */
