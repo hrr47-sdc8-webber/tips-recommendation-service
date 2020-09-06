@@ -1,3 +1,4 @@
+import newrelic from '../../newrelic.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -8,6 +9,7 @@ import ZagatMentions from './ZagatMentions.jsx';
 
 import axios from 'axios';
 import styled from 'styled-components';
+
 
 const port = 6070;
 
@@ -32,7 +34,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurantName: '',
+      name: '',
       featuredDishes: [],
       tip: '',
       knownFor: [],
@@ -41,15 +43,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    const app = this;
     axios.get(`/api/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
     .then(function (response) {
-      const data = response.data[0];
-      this.setState({
-        restaurantName: data.restaurant_name,
-        featuredDishes: data.featured_dishes,
-        tip: data.tip,
-        knownFor: data.known_for,
-        articles: data.artcles
+      const rInfo = response.data;
+      app.setState({
+        name: rInfo.name,
+        featuredDishes: [[rInfo.name_one, rInfo.image_one], [rInfo.name_two, rInfo.image_two], [rInfo.name_three, rInfo.image_three]],
+        tip: rInfo.featured_tip,
+        knownFor: rInfo.features,
+        articles: rInfo.articles
       });
     })
     .catch(function (error) {
@@ -77,8 +80,8 @@ class App extends React.Component {
       </section>
 
       <section id='articles'>
-        <StyledTitles>ZAGAT MENTIONS OF {this.state.restaurantName}</StyledTitles>
-        <ZagatMentions articles = {this.state.articles} />
+        <StyledTitles>ZAGAT MENTIONS OF {this.state.name}</StyledTitles>
+       <ZagatMentions articles = {this.state.articles} />
       </section>
     </StyledContainer>
     );

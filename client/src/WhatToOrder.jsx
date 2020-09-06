@@ -20,7 +20,7 @@ const StyledImage = styled.img`
 
 const StyledCaption = styled.figcaption`
   color: white;
-  margin: -40px 16px 0px 16px;
+  margin: -70px 16px 0px 16px;
   max-height: 72px;
   font-size: 24px;
   overflow: hidden;
@@ -35,9 +35,9 @@ class WhatToOrder extends React.Component {
   render() {
     return (
       <WhatToOrderContainer>
-        {this.props.dishes.map((dish) => {
+        {this.props.dishes.map((dish, index) => {
           return(
-            <StyledDishContainer className='dish'>
+            <StyledDishContainer className='dish' key={index}>
               <StyledImage src={dish[1]} alt="food"/>
               <StyledCaption>{dish[0]}</StyledCaption>
             </StyledDishContainer>

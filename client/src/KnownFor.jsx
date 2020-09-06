@@ -6,7 +6,6 @@ const KnownForContainer = styled.div`
   width: 100%;
   margin: 0px;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 `;
 
@@ -27,7 +26,6 @@ const KnownForFont = styled.figcaption`
   text-align: center;
 `;
 
-const icons = ['/dist/icons/kids.svg', '/dist/icons/lunch.svg', '/dist/icons/placeholder.svg', '/dist/icons/takeout.svg'];
 
 class KnownFor extends React.Component {
   constructor(props) {
@@ -37,10 +35,10 @@ class KnownFor extends React.Component {
   render() {
     return (
       <KnownForContainer>
-        {this.props.features.split(',').map((feature, index) => (
+        {this.props.features.map((feature, index) => (
           <figure className='feature' key={index}>
-            <KnownForIcon src={icons[Math.floor(Math.random() * (4))]} alt='icon'/>
-            <KnownForFont>{feature}</KnownForFont>
+            <KnownForIcon src={feature.image} alt='icon'/>
+            <KnownForFont>{feature.name}</KnownForFont>
           </figure>
         ))}
       </KnownForContainer>

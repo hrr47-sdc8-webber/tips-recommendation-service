@@ -8,6 +8,7 @@ const MentionsContainer = styled.div`
 
 const ArticleContainer = styled.a`
   display: flex;
+  width: 50%;
 `;
 
 const ArticleImage = styled.img`
@@ -16,7 +17,7 @@ const ArticleImage = styled.img`
 `;
 
 const ArticleTitle = styled.figcaption`
-  width: 158px;
+  width: 100%;
   padding: 22px 14px;
   text-decoration: none;
   color: #101820;
@@ -49,18 +50,28 @@ const ButtonContainer = styled.div`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+`;
 class ZagatMentions extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props)
   }
 
   render() {
     return (
       <MentionsContainer>
-        <ArticleContainer href="#" className='article'>
-          <ArticleImage src={this.props.articles.image} alt='dining'/>
-          <ArticleTitle>{this.props.articles.title}</ArticleTitle>
-        </ArticleContainer>
+        <Container>
+        {this.props.articles.map((article, index) => (
+            <ArticleContainer href="#" className='article' key={index}>
+            <ArticleImage src={article.image} alt='dining'/>
+            <ArticleTitle>{article.name}</ArticleTitle>
+            </ArticleContainer>
+        ))}
+        </Container>
         <ButtonContainer>
           <ButtonStyling type="button">SHOW ALL</ButtonStyling>
         </ButtonContainer>
