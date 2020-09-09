@@ -5,7 +5,7 @@ const cors = require('cors');
 const { Pool } = require('pg');
 const databaseInfo = require ('../database-info.json')
 const pool = new Pool(databaseInfo);
-
+const axios = require('axios');
 const app = express();
 const port = 3003;
 
