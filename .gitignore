@@ -25,7 +25,8 @@ build/
 # dist/
 
 # DB config
-/database/configFile.js
+database-info.json
+
 
 csv-files
 

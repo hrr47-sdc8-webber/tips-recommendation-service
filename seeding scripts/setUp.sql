@@ -1,4 +1,3 @@
-
 DROP TABLE IF EXISTS restaurant_info;
 DROP TABLE IF EXISTS restaurant_featuredDishes;
 DROP TABLE IF EXISTS restaurant_knownFor;

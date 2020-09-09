@@ -1,4 +1,3 @@
-import newrelic from '../../newrelic.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -44,7 +43,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const app = this;
-    axios.get(`/api/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
+    axios.get(`http://localhost:3003/api/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
     .then(function (response) {
       const rInfo = response.data;
       app.setState({
@@ -81,7 +80,7 @@ class App extends React.Component {
 
       <section id='articles'>
         <StyledTitles>ZAGAT MENTIONS OF {this.state.name}</StyledTitles>
-       <ZagatMentions articles = {this.state.articles} />
+       <ZagatMentions articles={this.state.articles} />
       </section>
     </StyledContainer>
     );
