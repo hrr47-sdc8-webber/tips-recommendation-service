@@ -43,7 +43,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const app = this;
-    axios.get(`http://localhost:3003/api/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
+    axios.get(`/api/${window.location.pathname.substring(1, window.location.pathname.length - 1)}`)
     .then(function (response) {
       const rInfo = response.data;
       app.setState({
