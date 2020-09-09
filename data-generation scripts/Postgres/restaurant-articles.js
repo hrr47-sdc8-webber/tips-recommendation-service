@@ -14,7 +14,8 @@ function writeRestaurantArticles(numOfRest, writer, encoding, callback) {
       i -= 1;
       id += 1;
       let articles = [];
-      for (let i = 0; i < 20; i++) {
+      let randomNumOfArt = randomNumGenerator(20);
+      for (let i = 0; i < randomNumOfArt; i++) {
         let randomNum = randomNumGenerator(50000);
         if (articles.indexOf(randomNum) === -1) {
           articles.push(randomNum);
