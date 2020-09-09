@@ -9,13 +9,15 @@ const pool = new Pool(databaseInfo);
 const app = express();
 const port = 3003;
 
+const instance = axios.create({ baseURL: "http://" + location. host. split(":")[0] });
+
 app.use(cors());
 app.use(express.json());
 
 app.use(express.static('client/dist'));
 app.use('/:id', express.static('client/dist'));
 
-app.get(`/api/:id`, async (req, res) => {
+instance.get(`/api/:id`, async (req, res) => {
   try {
     const restaurantId = req.params.id
 
