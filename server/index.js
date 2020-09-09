@@ -17,7 +17,6 @@ app.use('/:id', express.static('client/dist'));
 
 app.get(`/api/:id`, async (req, res) => {
   try {
-    console.log(req);
     const restaurantId = req.params.id
 
     const data = await pool.query(`SELECT name, featured_tip,
