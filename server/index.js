@@ -5,14 +5,9 @@ const cors = require('cors');
 const { Pool } = require('pg');
 const databaseInfo = require ('../database-info.json')
 const pool = new Pool(databaseInfo);
-const axios = require('axios');
 const app = express();
 const port = 3003;
 
-var getUrl = window.location;
-var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-
-const instance = axios.create({ baseURL: baseUrl });
 
 app.use(cors());
 app.use(express.json());
@@ -20,8 +15,9 @@ app.use(express.json());
 app.use(express.static('client/dist'));
 app.use('/:id', express.static('client/dist'));
 
-instance.get(`/api/:id`, async (req, res) => {
+app.get(`/api/:id`, async (req, res) => {
   try {
+    console.log(req);
     const restaurantId = req.params.id
 
     const data = await pool.query(`SELECT name, featured_tip,
